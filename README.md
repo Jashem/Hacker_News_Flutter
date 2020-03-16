@@ -1,6 +1,6 @@
-# hacker
+# Hacker_News_Flutter
 
-A new Flutter project.
+A new Flutter project built with bloc pattern and complex recursive data fetching.
 
 ## Getting Started
 
