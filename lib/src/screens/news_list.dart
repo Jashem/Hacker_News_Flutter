@@ -13,7 +13,6 @@ class _NewsListState extends State<NewsList> {
   @override
   Widget build(BuildContext context) {
     StoriesBloc bloc = StoriesProvider.of(context);
-    bloc.fetchTopIds();
     return Scaffold(
       appBar: AppBar(
         title: Text("Top News"),

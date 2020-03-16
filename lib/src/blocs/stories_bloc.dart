@@ -11,7 +11,7 @@ class StoriesBloc {
 
   Stream<List<int>> get topIds => _topIds.stream;
   Stream<Map<int, Future<ItemModel>>> get items => _itemOutput.stream;
-  Function(int) get fetchItem => _fetchItemInput.sink.add;
+  void Function(int) get fetchItem => _fetchItemInput.sink.add;
 
   StoriesBloc() {
     _fetchItemInput.stream.transform(_fetchItemTransform()).pipe(_itemOutput);
@@ -23,8 +23,8 @@ class StoriesBloc {
   }
 
   _fetchItemTransform() {
-    return ScanStreamTransformer(
-      (Map<int, Future<ItemModel>> cache, int id, index) {
+    return ScanStreamTransformer<int, Map<int, Future<ItemModel>>>(
+      (cache, int id, index) {
         cache[id] = _repository.fetchItem(id);
         return cache;
       },
